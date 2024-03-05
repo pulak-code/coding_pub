@@ -1,6 +1,7 @@
 package crud.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -79,7 +80,7 @@ class UserControllerTest {
 		User updatedUser = new User(1L, "John", "Smith");
 
 		when(userRepository.findById(1L)).thenReturn(java.util.Optional.of(existingUser));
-		when(userRepository.save(updatedUser)).thenReturn(updatedUser);
+		when(userRepository.save(any())).thenReturn(updatedUser);
 
 		User result = userService.updateUser(1L, updatedUser);
 
